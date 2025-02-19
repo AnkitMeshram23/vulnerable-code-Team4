@@ -50,11 +50,6 @@ jobs:
       - name: Run Docker Image Scan
         run: trivy image --severity HIGH,CRITICAL my-app:latest
  
-      - name: Fix Security Issues in Docker Image
-        run: |
-          echo "Scanning and fixing Docker image vulnerabilities..."
-          docker scan . || true
- 
       - name: Rebuild and Rescan Docker Image After Fixes
         run: |
           docker build -t my-app:latest .
